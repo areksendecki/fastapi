@@ -82,17 +82,28 @@ print(user_dict)
 , ▶️ ⏮️ `user_dict` ⚪️➡️ 🔛, ✍:
 
 ```Python
-UserIn(**user_dict)
+UserInDB(**user_dict)
 ```
 
 🔜 🏁 🕳 🌓:
 
 ```Python
-UserIn(
+UserInDB(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
+)
+```
+
+⚖️ 🌅 ⚫️❔, ⚙️ `user_dict` 🔗, ⏮️ ⚫️❔ 🎚 ⚫️ 💪 ✔️ 🔮:
+
+```Python
+UserInDB(
+    username = user_dict["username"],
+    password = user_dict["password"],
+    email = user_dict["email"],
+    full_name = user_dict["full_name"],
 )
 ```
 
@@ -102,16 +113,16 @@ UserIn(
 
 ```Python
 user_dict = user_in.dict()
-UserIn(**user_dict)
+UserInDB(**user_dict)
 ```
 
 🔜 🌓:
 
 ```Python
-UserIn(**user_in.dict())
+UserInDB(**user_in.dict())
 ```
 
-...↩️ `user_in.dict()` `dict`, &amp; ⤴️ 👥 ⚒ 🐍 "🎁" ⚫️ 🚶‍♀️ ⚫️ `UserIn` 🔠 ⏮️ `**`.
+...↩️ `user_in.dict()` `dict`, &amp; ⤴️ 👥 ⚒ 🐍 "🎁" ⚫️ 🚶‍♀️ ⚫️ `UserInDB` 🔠 ⏮️ `**`.
 
 , 👥 🤚 Pydantic 🏷 ⚪️➡️ 💽 ➕1️⃣ Pydantic 🏷.
 
@@ -128,6 +139,7 @@ UserInDB(**user_in.dict(), hashed_password=hashed_password)
 ```Python
 UserInDB(
     username = user_dict["username"],
+    password = user_dict["password"],
     email = user_dict["email"],
     full_name = user_dict["full_name"],
     hashed_password = hashed_password,
