@@ -90,13 +90,13 @@ If we take a `dict` like `user_dict` and pass it to a function (or class) with `
 So, continuing with the `user_dict` from above, writing:
 
 ```Python
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 would result in something equivalent to:
 
 ```Python
-UserInDB(
+UserIn(
     username="john",
     password="secret",
     email="john.doe@example.com",
@@ -104,16 +104,6 @@ UserInDB(
 )
 ```
 
-Or more exactly, using `user_dict` directly, with whatever contents it might have in the future:
-
-```Python
-UserInDB(
-    username = user_dict["username"],
-    password = user_dict["password"],
-    email = user_dict["email"],
-    full_name = user_dict["full_name"],
-)
-```
 
 #### A Pydantic model from the contents of another
 
@@ -121,13 +111,13 @@ As in the example above we got `user_dict` from `user_in.dict()`, this code:
 
 ```Python
 user_dict = user_in.dict()
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 would be equivalent to:
 
 ```Python
-UserInDB(**user_in.dict())
+UserIn(**user_in.dict())
 ```
 
 ...because `user_in.dict()` is a `dict`, and then we make Python "unwrap" it by passing it to `UserInDB` prefixed with `**`.
@@ -147,7 +137,6 @@ UserInDB(**user_in.dict(), hashed_password=hashed_password)
 ```Python
 UserInDB(
     username = user_dict["username"],
-    password = user_dict["password"],
     email = user_dict["email"],
     full_name = user_dict["full_name"],
     hashed_password = hashed_password,
