@@ -11,7 +11,7 @@ for file_path in file_paths_list:
     with open(file_path, 'rb') as file:
         text = file.read()
     new_text = re.search(
-        pattern=rb"####[^\n]+`dict`.*?####[^\n]+`dict`",
+        pattern=rb"####[^\n]+`dict`",
         string=text,
         flags=re.MULTILINE | re.DOTALL
     )

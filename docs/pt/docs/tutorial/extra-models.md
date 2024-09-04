@@ -82,17 +82,28 @@ Se tomarmos um `dict` como `user_dict` e passarmos para uma função (ou classe)
 Então, continuando com o `user_dict` acima, escrevendo:
 
 ```Python
-UserIn(**user_dict)
+UserInDB(**user_dict)
 ```
 
 Resultaria em algo equivalente a:
 
 ```Python
-UserIn(
+UserInDB(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
+)
+```
+
+Ou mais exatamente, usando `user_dict` diretamente, com qualquer conteúdo que ele possa ter no futuro:
+
+```Python
+UserInDB(
+    username = user_dict["username"],
+    password = user_dict["password"],
+    email = user_dict["email"],
+    full_name = user_dict["full_name"],
 )
 ```
 
@@ -102,13 +113,13 @@ Como no exemplo acima, obtivemos o `user_dict` a partir do `user_in.dict()`, est
 
 ```Python
 user_dict = user_in.dict()
-UserIn(**user_dict)
+UserInDB(**user_dict)
 ```
 
 seria equivalente a:
 
 ```Python
-UserIn(**user_in.dict())
+UserInDB(**user_in.dict())
 ```
 
 ...porque `user_in.dict()` é um `dict`, e depois fazemos o Python "desembrulhá-lo" passando-o para UserInDB precedido por `**`.
