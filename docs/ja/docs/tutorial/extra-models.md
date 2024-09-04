@@ -70,28 +70,17 @@ print(user_dict)
 そこで上述の`user_dict`の続きを以下のように書くと:
 
 ```Python
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 以下と同等の結果になります:
 
 ```Python
-UserInDB(
+UserIn(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
-)
-```
-
-もっと正確に言えば、`user_dict`を将来的にどんな内容であっても直接使用することになります:
-
-```Python
-UserInDB(
-    username = user_dict["username"],
-    password = user_dict["password"],
-    email = user_dict["email"],
-    full_name = user_dict["full_name"],
 )
 ```
 
@@ -101,16 +90,16 @@ UserInDB(
 
 ```Python
 user_dict = user_in.dict()
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 これは以下と同等です:
 
 ```Python
-UserInDB(**user_in.dict())
+UserIn(**user_in.dict())
 ```
 
-...なぜなら`user_in.dict()`は`dict`であり、`**`を付与して`UserInDB`を渡してPythonに「展開」させているからです。
+...なぜなら`user_in.dict()`は`dict`であり、`**`を付与して`UserIn`を渡してPythonに「展開」させているからです。
 
 そこで、別のPydanticモデルのデータからPydanticモデルを取得します。
 
@@ -127,7 +116,6 @@ UserInDB(**user_in.dict(), hashed_password=hashed_password)
 ```Python
 UserInDB(
     username = user_dict["username"],
-    password = user_dict["password"],
     email = user_dict["email"],
     full_name = user_dict["full_name"],
     hashed_password = hashed_password,
