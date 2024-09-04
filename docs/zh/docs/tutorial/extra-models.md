@@ -82,28 +82,17 @@ print(user_dict)
 因此，接着上面的 `user_dict` 继续编写如下代码：
 
 ```Python
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 就会生成如下结果：
 
 ```Python
-UserInDB(
+UserIn(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
-)
-```
-
-或更精准，直接把可能会用到的内容与 `user_dict` 一起使用：
-
-```Python
-UserInDB(
-    username = user_dict["username"],
-    password = user_dict["password"],
-    email = user_dict["email"],
-    full_name = user_dict["full_name"],
 )
 ```
 
@@ -113,16 +102,16 @@ UserInDB(
 
 ```Python
 user_dict = user_in.dict()
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 等效于：
 
 ```Python
-UserInDB(**user_in.dict())
+UserIn(**user_in.dict())
 ```
 
-……因为 `user_in.dict()` 是字典，在传递给 `UserInDB` 时，把 `**` 加在  `user_in.dict()` 前，可以让 Python 进行**解包**。
+……因为 `user_in.dict()` 是字典，在传递给 `UserIn` 时，把 `**` 加在  `user_in.dict()` 前，可以让 Python 进行**解包**。
 
 这样，就可以用其它 Pydantic 模型中的数据生成 Pydantic 模型。
 

@@ -119,7 +119,7 @@ would be equivalent to:
 UserIn(**user_in.dict())
 ```
 
-...because `user_in.dict()` is a `dict`, and then we make Python "unwrap" it by passing it to `UserInDB` prefixed with `**`.
+...because `user_in.dict()` is a `dict`, and then we make Python "unwrap" it by passing it to `UserIn` prefixed with `**`.
 
 So, we get a Pydantic model from the data in another Pydantic model.
 
