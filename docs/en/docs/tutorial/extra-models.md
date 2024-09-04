@@ -104,7 +104,6 @@ UserIn(
 )
 ```
 
-
 #### A Pydantic model from the contents of another
 
 As in the example above we got `user_dict` from `user_in.dict()`, this code:

@@ -90,28 +90,17 @@ Wenn wir ein `dict` wie `user_dict` nehmen, und es einer Funktion (oder Klassenm
 Wenn wir also das `user_dict` von oben nehmen und schreiben:
 
 ```Python
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 dann ist das ungefähr äquivalent zu:
 
 ```Python
-UserInDB(
+UserIn(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
-)
-```
-
-Oder, präziser, `user_dict` wird direkt verwendet, welche Werte es auch immer haben mag:
-
-```Python
-UserInDB(
-    username = user_dict["username"],
-    password = user_dict["password"],
-    email = user_dict["email"],
-    full_name = user_dict["full_name"],
 )
 ```
 
@@ -121,13 +110,13 @@ Da wir in obigem Beispiel `user_dict` mittels `user_in.dict()` erzeugt haben, is
 
 ```Python
 user_dict = user_in.dict()
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 äquivalent zu:
 
 ```Python
-UserInDB(**user_in.dict())
+UserIn(**user_in.dict())
 ```
 
 ... weil `user_in.dict()` ein `dict` ist, und dann lassen wir Python es „entpacken“, indem wir es `UserInDB` übergeben, mit vorangestelltem `**`.
@@ -147,7 +136,6 @@ UserInDB(**user_in.dict(), hashed_password=hashed_password)
 ```Python
 UserInDB(
     username = user_dict["username"],
-    password = user_dict["password"],
     email = user_dict["email"],
     full_name = user_dict["full_name"],
     hashed_password = hashed_password,
