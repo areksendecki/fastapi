@@ -119,7 +119,7 @@ UserIn(**user_dict)
 UserIn(**user_in.dict())
 ```
 
-... weil `user_in.dict()` ein `dict` ist, und dann lassen wir Python es „entpacken“, indem wir es `UserInDB` übergeben, mit vorangestelltem `**`.
+... weil `user_in.dict()` ein `dict` ist, und dann lassen wir Python es „entpacken“, indem wir es `UserIn` übergeben, mit vorangestelltem `**`.
 
 Wir erhalten also ein Pydantic-Modell aus den Daten eines anderen Pydantic-Modells.
 
