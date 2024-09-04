@@ -82,28 +82,17 @@ print(user_dict)
 Поэтому, продолжая описанный выше пример с `user_dict`, написание такого кода:
 
 ```Python
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 Будет работать так же, как примерно такой код:
 
 ```Python
-UserInDB(
+UserIn(
     username="john",
     password="secret",
     email="john.doe@example.com",
     full_name=None,
-)
-```
-
-Или, если для большей точности мы напрямую используем `user_dict` с любым потенциальным содержимым, то этот пример будет выглядеть так:
-
-```Python
-UserInDB(
-    username = user_dict["username"],
-    password = user_dict["password"],
-    email = user_dict["email"],
-    full_name = user_dict["full_name"],
 )
 ```
 
@@ -113,13 +102,13 @@ UserInDB(
 
 ```Python
 user_dict = user_in.dict()
-UserInDB(**user_dict)
+UserIn(**user_dict)
 ```
 
 будет равнозначен такому:
 
 ```Python
-UserInDB(**user_in.dict())
+UserIn(**user_in.dict())
 ```
 
 ...потому что `user_in.dict()` - это `dict`, и затем мы указываем, чтобы Python его "распаковал", когда передаём его в `UserInDB` и ставим перед ним `**`.
